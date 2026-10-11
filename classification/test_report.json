@@ -1,0 +1,12 @@
+{
+  "test_accuracy": 0.9172831203765972,
+  "confusion_matrix": {
+    "TP": 548,
+    "FN": 54,
+    "FP": 69,
+    "TN": 816
+  },
+  "sensitivity_recall": 0.9102990033222591,
+  "specificity": 0.9220338983050848,
+  "precision": 0.8881685575364667
+}
