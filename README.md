@@ -3,7 +3,7 @@
 UE24CS352A Machine Learning mini-project (Team 34).
 Weakly supervised pneumonia localization on chest X-rays: a CNN classifies whether an X-ray shows pneumonia, and a Class Activation Map (CAM) localizes the opacity without bounding-box labels. Based on *Weakly Supervised Pneumonia Localization* (Huang, Monam, Cortes).
 
-**Team:** <Name 1> (classification), <Name 2> (localization and demo)
+**Team:** SIRI KRISHNA CR (classification), SANKET SHIVAJI RATHOD (localization and demo)
 
 ## Repository structure
 
