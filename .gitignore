@@ -1,0 +1,23 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+venv/
+.venv/
+
+# VS Code settings
+.vscode/
+
+# Dataset and medical images
+data/
+*.dcm
+
+# Model checkpoints
+*.pt
+*.pth
+*.ckpt
+
+# Dataset folders
+/stage_2_train_labels.csv/
+/stage_2_detailed_class_info.csv/
