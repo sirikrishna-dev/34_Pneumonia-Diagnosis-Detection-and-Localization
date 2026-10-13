@@ -67,12 +67,49 @@ python train.py      --data data/rsna_128.npz --epochs 20 --lr 1e-4     # trains
 CNN confusion matrix: TP 548, FN 54, FP 69, TN 816. Sensitivity 91.0%, specificity 92.2%, precision 88.8%.
 
 ## Part 2: Localization (`localization/`)
+### Methodology
 
-<Describe the CAM, heatmap, DFS clustering, bounding box and IoU steps, and add run instructions and results here.>
+1. **CAM Generation:** Generates a heatmap highlighting image regions contributing to the CNN's pneumonia prediction.
+2. **Heatmap Processing:** Normalizes the heatmap and applies a relative activation threshold.
+3. **Region Clustering:** Groups connected activated pixels into candidate regions.
+4. **Bounding Box Generation:** Converts activated regions into predicted bounding boxes.
+5. **Peak-Based Localization:** Identifies prominent local maxima in the heatmap to generate candidate boxes.
+6. **Evaluation:** Compares predicted boxes with ground-truth annotations using Intersection over Union (IoU), precision, recall, and F1-score.
+
 
 ## Demo
+The demo displays the original chest X-ray, CAM heatmap, and localization overlay. Red boxes indicate predicted regions, while green dashed boxes indicate ground-truth annotations.
 
-<Add the command to launch the demo here, for example `streamlit run localization/app.py`.>
+**Peak-based localization:**
+
+```bash
+python localization/demo.py --method peak --fraction 0.70 --peak-fraction 0.90 --save localization/demo_result.png --no-show
+
+
+### Step 3: Add the validation results
+
+Immediately after the demo commands, add:
+
+```markdown
+### Validation Results
+
+Results from a separate exploratory validation sample of 100 annotated images, using an IoU threshold of 0.50.
+
+| Metric | Original CAM | Peak-Based CAM |
+|---|---:|---:|
+| True Positives (TP) | 10 | 16 |
+| False Positives (FP) | 136 | 128 |
+| False Negatives (FN) | 149 | 143 |
+| Precision | 6.85% | 11.11% |
+| Recall | 6.29% | 10.06% |
+| F1-score | 6.56% | 10.56% |
+| Mean matched IoU | 0.5608 | 0.5855 |
+
+The peak-based method improved the measured localization metrics on this validation sample. However, precision and recall remain low. Mean matched IoU is calculated over matched boxes and is not classification accuracy.
+
+### Limitations
+
+CAM highlights regions associated with the model's prediction but does not guarantee exact lesion boundaries. Predicted boxes may miss annotated regions or include irrelevant areas. These results are exploratory, and the system is not a clinically validated diagnostic tool.
 
 ## Reference
 
