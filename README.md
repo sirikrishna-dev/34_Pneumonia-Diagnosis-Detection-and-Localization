@@ -84,13 +84,9 @@ The demo displays the original chest X-ray, CAM heatmap, and localization overla
 
 ```bash
 python localization/demo.py --method peak --fraction 0.70 --peak-fraction 0.90 --save localization/demo_result.png --no-show
+```
 
 
-### Step 3: Add the validation results
-
-Immediately after the demo commands, add:
-
-```markdown
 ### Validation Results
 
 Results from a separate exploratory validation sample of 100 annotated images, using an IoU threshold of 0.50.
